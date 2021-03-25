@@ -25,7 +25,7 @@ This model for data integrity could have many implications across industries inc
 
 # Setup
 
-First, you need to have 'make' installed.
+First, you need to have `make` installed.
   
-* To set up the development environment, run 'make_env'
-* To build production, run 'make_prod'
+* To set up the development environment, run `make_env`
+* To build production, run `make_prod`
