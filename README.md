@@ -1,3 +1,10 @@
+# Setup
+
+First, you need to have `make` installed.
+  
+* To set up the development environment, run `make_env`
+* To build production, run `make_prod`
+
 # Overview
 SWE Project with Brian Guo, Nilesh Mukherji, Winston Yang for CS-4513
 
@@ -22,10 +29,3 @@ To reduce data storage costs, f can be increased. However, the lower the value o
 One major presumption of this model is that the central write server is secure and writes are valid. Using modern trasaction hashing models (i.e. RSA key pair encryption), one can be reasonably sure of the later. The former could be enforced through strict security policy.
 
 This model for data integrity could have many implications across industries including healthcare, finance and logistics. However, Universal ID is an obvious use case because such a model would create in essence a verifiably tamper proof system. This could be a huge step in preventing corruption and streamlining aid delivery in developing nations. 
-
-# Setup
-
-First, you need to have `make` installed.
-  
-* To set up the development environment, run `make_env`
-* To build production, run `make_prod`
