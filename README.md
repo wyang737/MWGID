@@ -1,4 +1,4 @@
-# SWEProject
+# Overview
 SWE Project with Brian Guo, Nilesh Mukherji, Winston Yang for CS-4513
 
 Our project aims to create a virtual ID system to aid in the deployment of universal ID efforts in developing nations.
@@ -23,4 +23,9 @@ One major presumption of this model is that the central write server is secure a
 
 This model for data integrity could have many implications across industries including healthcare, finance and logistics. However, Universal ID is an obvious use case because such a model would create in essence a verifiably tamper proof system. This could be a huge step in preventing corruption and streamlining aid delivery in developing nations. 
 
+# Setup
 
+First, you need to have '<make>' installed.
+  
+* To set up the development environment, run '<make_env>'
+* To build production, run '<make_prod>'
