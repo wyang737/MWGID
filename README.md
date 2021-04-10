@@ -1,6 +1,6 @@
 # Setup
 
-First, you need to have `make` installed. To run the project, you will need `Node.js`, `MongoDB`, and `Mocha`
+First, you need to have `make` installed. To run the project, you will need `Node.js`, `MongoDB` and `Mocha`
 - To set up the development environment, run `make_env`
 - To build production, run `make_prod`
 - To run a test, run `make_tests`
@@ -30,8 +30,14 @@ One major presumption of this model is that the central write server is secure a
 
 This model for data integrity could have many implications across industries including healthcare, finance and logistics. However, Universal ID is an obvious use case because such a model would create in essence a verifiably tamper proof system. This could be a huge step in preventing corruption and streamlining aid delivery in developing nations. 
 
-# Requirements
+# Non-functional Requirements
 1. Create a r/w system with little to no PID to protect user privacy
 2. Provide a data integrity model that relies on computational trust
 3. Provide a secure r/w server with strict authentication controls
 4. Distribute data across multiple databases to reduce storage costs and improve security
+
+
+# Functional Requirements
+1. Admins can create new users.
+2. Users can create records.
+3. Admins and users can query for records.
