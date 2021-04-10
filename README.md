@@ -1,6 +1,6 @@
 # Setup
 
-First, you need to have `make` installed. To run the project, you will need `Node.js`, `MongoDB`. To run the test, you need to have `Mocha` installed.
+First, you need to have `make` installed. To run the project, you will need `Node.js`, `MongoDB`. To run the test, you need to have `Mocha` (https://mochajs.org/) installed.
   
 * To set up the development environment, run `make_env`
 * To build production, run `make_prod`
