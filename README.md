@@ -1,9 +1,10 @@
 # Setup
 
-First, you need to have `make` installed.
+First, you need to have `make` installed. To run the project, you will need `Node.js`, `MongoDB`. To run the test, you need to have `Mocha` installed.
   
 * To set up the development environment, run `make_env`
 * To build production, run `make_prod`
+* To run a test, run `make_tests`
 
 # Overview
 SWE Project with Brian Guo, Nilesh Mukherji, Winston Yang for CS-4513
