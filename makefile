@@ -1,4 +1,7 @@
 #Makefile for SWE Project 
 
 prod:
-  echo "Hello World!"
+	@echo "Hello World!"
+
+test:
+	@npx mocha ./app/create_db.js
