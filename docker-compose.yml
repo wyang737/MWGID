@@ -1,0 +1,39 @@
+version: "2"
+services:
+    mongo:
+        image: 'mongo:latest'
+        ports:
+            - '27018:27017'
+        networks:
+            - myapp
+    mongo2:
+        image: 'mongo:latest'
+        ports:
+            - '27019:27017'
+        networks:
+            - myapp2
+    driver1:
+        build: ./app/driver_1/
+        ports:
+            - '8080:8080'
+        networks:
+            - myapp
+        depends_on:
+            - mongo
+    driver2:
+        build: ./app/driver_2/
+        ports:
+            - '8081:8080'
+        networks:
+            - myapp2
+        depends_on:
+            - mongo2
+    frontend:
+        build: ./Front-End/
+        ports:
+            - '4200:4200'
+networks:
+    myapp:
+        driver: bridge
+    myapp2:
+        driver: bridge
