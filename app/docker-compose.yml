@@ -1,0 +1,10 @@
+services:
+    webapp:
+        build: .
+        ports:
+            - '8080:8080'
+
+    mongo:
+        image: 'mongo:latest'
+        ports:
+            - '27018:27017'
