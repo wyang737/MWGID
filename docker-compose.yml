@@ -13,7 +13,7 @@ services:
         networks:
             - myapp2
     driver1:
-        build: ./app/driver_1/
+        build: ./db-drivers/driver_1/
         ports:
             - '8080:8080'
         networks:
@@ -21,7 +21,7 @@ services:
         depends_on:
             - mongo
     driver2:
-        build: ./app/driver_2/
+        build: ./db-drivers/driver_2/
         ports:
             - '8081:8080'
         networks:
@@ -29,9 +29,12 @@ services:
         depends_on:
             - mongo2
     frontend:
-        build: ./Front-End/
+        build: ./front-end/
         ports:
-            - '4200:4200'
+            - '4201:4200'
+        volumes:
+            - './front-end/frontend:/app'
+            - '/app/node_modules'
 networks:
     myapp:
         driver: bridge

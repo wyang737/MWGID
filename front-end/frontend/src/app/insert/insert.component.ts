@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-insert',
@@ -38,3 +38,4 @@ export class InsertComponent implements OnInit {
   	this.http.post('')
   }
 }
+*/
