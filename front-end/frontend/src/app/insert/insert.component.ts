@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 // import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -9,12 +11,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class InsertComponent implements OnInit {
 
+  @ViewChild('grantAccessForm', {static: false}) grantAccessForm: NgForm;
+  dataModel: any = {};
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onSubmit(form){
+    console.log(form);
+  } 
 }
+
 /*
 export class InsertComponent implements OnInit {
 	SERVER_URL = "http://localhost:4200/insert";
@@ -38,4 +46,8 @@ export class InsertComponent implements OnInit {
   	this.http.post('')
   }
 }
+<<<<<<< HEAD:Front-End/frontend/src/app/insert/insert.component.ts
 */
+=======
+*/
+>>>>>>> 50685ea3397221a7d20d2227c9c447f28265103e:front-end/frontend/src/app/insert/insert.component.ts
