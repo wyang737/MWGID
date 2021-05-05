@@ -1,8 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-insert',
@@ -12,14 +9,21 @@ import { NgForm } from '@angular/forms';
 export class InsertComponent implements OnInit {
 
   @ViewChild('grantAccessForm', {static: false}) grantAccessForm: NgForm;
-  dataModel: any = {};
+  
+  datamodel = {
+    "userid":"",
+    "recipientid": "",
+    "data":""
+  }
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
   }
   onSubmit(form){
-    console.log(form);
+    console.log(JSON.stringify(form));
   } 
 }
 

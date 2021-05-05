@@ -1,5 +1,26 @@
 <h2>Query the Database...</h2>
-<form action="" method="POST">
-	<input type="text" placeholder="USERID">
-	<input type="submit" value="Query">
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+	<label>UserID:      </label>
+	<input type="text" [(ngModel)]="datamodel.userid" name="userid" required>
+	<button type="submit"> Add </button>
 </form>
+
+<div class="container" *ngIf="formSubmit">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Recipient ID</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tran of returnValue.transactions">
+                <td>{{tran.userid}}</td>
+                <td>{{tran.recipid}}</td>
+                <td>{{tran.data}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

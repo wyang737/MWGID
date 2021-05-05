@@ -1,13 +1,13 @@
 <h2> Add New Transaction:</h2>
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 	<label>UserID:      </label>
-	<input type="text" [(ngModel)]="userid" name="userid" required>
+	<input type="text" [(ngModel)]="datamodel.userid" name="userid" required>
 	<br/>
 	<label>RecipientID: </label>
-	<input type="text" [(ngModel)]="recipientid" name="recipientid" required>
+	<input type="text" [(ngModel)]="datamodel.recipientid" name="recipientid" required>
 	<br/>
 	<label> Transaction Data: </label>
-	<input type="text" [(ngModel)]="data" name="data" required>
+	<input type="text" [(ngModel)]="datamodel.data" name="data" required>
 	<br/>
 	<button type="submit"> Add </button>
 </form>
