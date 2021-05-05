@@ -1,37 +1,53 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://mongo:27017/";
 var assert = require('assert');
-var name1;
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+const LOCAL_PORT = 8080;
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+var mongoose = require('mongoose');
 
-// Insert
-MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    var myobj = { name: "Company Inc", address: "Highway 37" };
-    dbo.collection("customers").insertOne(myobj, function(err, res) {
-        if (err) throw err;
-        console.log("1 document inserted");
-        db.close();
-    });
-}); 
+// Create link to Angular build directory
+// The `ng build` command will save the result
+// under the `dist` folder.
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+var db;
+var routes = require('./routes/routes');
 
-// Query
-MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    dbo.collection("customers").findOne({}, function(err, result) {
-        if (err) throw err;
-        name1 = result.name;
-        console.log(name1);
-        db.close();
-    });
-}); 
+mongoose.Promise = global.Promise;
+// mongoose.connect(url); 
 
-  
-// describe('DB Query', function() {
-//     describe ('First person\'s name who lives at Highway 37', function(){
-//         it('should return Company Inc', function(){
-//             assert.equal(name1, "Company Inc");
-//         });
-//     });
-// }); 
+MongoClient.connect('mongodb://mongo:27017/mongo1', function(err, database) {
+    if (err) {
+        throw err;
+    }
+    else {
+        db = database;        
+    }
+});
+
+
+// make our db accessible to our router
+app.use(function(req, res, next) {
+	// req.db = db;
+  req.test = "Hello1";
+  req.db = db.db("mongo1");
+	next();
+});
+
+
+
+function manageError(res, reason, message, code) {
+    console.log("Error: " + reason);
+    res.status(code || 500).json({ "error": message });
+}
+require('./routes/routes.js')(app);
+app.listen(LOCAL_PORT, function() {
+	console.log('Express server listening on port ' + LOCAL_PORT);
+});
+

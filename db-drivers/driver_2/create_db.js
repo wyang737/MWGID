@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 //Create a database named "mydb":
-var url1 = "mongodb://mongo2:27017/mydb";
+var url1 = "mongodb://mongo2:27017/mongo2";
 var url = "mongodb://mongo2:27017/";
 
 

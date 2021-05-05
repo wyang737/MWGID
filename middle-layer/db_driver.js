@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://mongo2:27017/";
 var assert = require('assert');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -20,12 +20,23 @@ var db;
 var routes = require('./routes/routes');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(url); 
+// mongoose.connect(url); 
+
+MongoClient.connect('mongodb://mongo2:27017/mongo2', function(err, database) {
+    if (err) {
+        throw err;
+    }
+    else {
+        db = database;        
+    }
+});
 
 
 // make our db accessible to our router
 app.use(function(req, res, next) {
-	req.db = db;
+	// req.db = db;
+  req.test = "Hello1";
+  req.db = db.db("mongo2");
 	next();
 });
 
@@ -36,7 +47,7 @@ function manageError(res, reason, message, code) {
     res.status(code || 500).json({ "error": message });
 }
 require('./routes/routes.js')(app);
-app.listen(app.get('port'), function() {
-	console.log('Express server listening on port ' + app.get('port'));
+app.listen(LOCAL_PORT, function() {
+	console.log('Express server listening on port ' + LOCAL_PORT);
 });
 

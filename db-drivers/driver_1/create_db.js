@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 //Create a database named "mydb":
-var url1 = "mongodb://mongo:27017/mydb";
+var url1 = "mongodb://mongo:27017/mongo1";
 var url = "mongodb://mongo:27017/";
 
 
@@ -18,7 +18,7 @@ MongoClient.connect(url, function(err, db) {
     console.log(err);
   }
     var dbo = db.db("mydb");
-    dbo.createCollection("customers", function(err, res) {
+    dbo.createCollection("transactions", function(err, res) {
       if (err){
         console.log(err);
       }
