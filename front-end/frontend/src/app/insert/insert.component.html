@@ -1,13 +1,21 @@
-<h2> Add New Transaction:</h2>
+<h2>Add New Transaction:</h2>
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-	<label>UserID:      </label>
-	<input type="text" [(ngModel)]="datamodel.userid" name="userid" required>
-	<br/>
-	<label>RecipientID: </label>
-	<input type="text" [(ngModel)]="datamodel.recipientid" name="recipientid" required>
-	<br/>
-	<label> Transaction Data: </label>
-	<input type="text" [(ngModel)]="datamodel.data" name="data" required>
-	<br/>
-	<button type="submit"> Add </button>
+	<table style="width:100%">
+		<tr>
+			<td><label>Sender ID:</label></td>
+			<td><input [(ngModel)]="datamodel.userid" name="userid" required></td>
+		</tr>
+		<tr>
+			<td><label>Recipient ID:       </label></td>
+			<td><input type="text" [(ngModel)]="datamodel.recipientid" name="recipientid" required></td>
+		</tr>	
+		<tr>
+			<td><label> Transaction Data:   </label></td>
+			<td><input type="text" [(ngModel)]="datamodel.data" name="data" required></td>
+		</tr>
+		<tr>
+			<button type="submit"> Add </button>
+		</tr>
+	</table>
+	
 </form>
