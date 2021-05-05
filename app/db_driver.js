@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-
+var mongoose = require('mongoose');
 
 // Create link to Angular build directory
 // The `ng build` command will save the result
@@ -19,13 +19,8 @@ app.use(express.static(distDir));
 var db;
 var routes = require('./routes/routes');
 
-MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    else {
-		db = database;
-		console.log("Connected to db!");
-	}
-});
+mongoose.Promise = global.Promise;
+mongoose.connect(url); 
 
 
 // make our db accessible to our router
