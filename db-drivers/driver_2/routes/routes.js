@@ -1,7 +1,5 @@
 module.exports = function (app) {
     app.post('/insert', (req, res) => {
-        // var db0 = req.db;
-        // var collection = db0.collection('transaction');
         var post = req.query;
         console.log("SANITY CHECK: ", req.query);
         req.db.collection('transaction').insertOne(post, function(error, result) {
