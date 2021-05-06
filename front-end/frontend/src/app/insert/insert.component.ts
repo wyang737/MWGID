@@ -12,16 +12,16 @@ export class InsertComponent implements OnInit {
   @ViewChild('grantAccessForm', {static: false}) grantAccessForm: NgForm;
   
   datamodel = {
-    "senderID": "",
-    "recipID": "",
-    "data": ""
+    "senderID":"",
+    "recipientID": "",
+    "data":""
   }
 
   constructor(private http : HttpClient) { }
 
   data = {
     "senderID": "asdf",
-    "recipID": "asdfasdfsdfsd",
+    "recipientID": "asdfasdfsdfsd",
     "data": "hjgfhj"
   }
   ngOnInit(): void {
