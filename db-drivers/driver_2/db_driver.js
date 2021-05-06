@@ -4,6 +4,8 @@ var assert = require('assert');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var cors = require('cors');
+app.use(cors());
 const LOCAL_PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({

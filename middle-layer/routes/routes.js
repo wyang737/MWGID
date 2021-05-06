@@ -48,8 +48,10 @@ app.get('/queryall', (req, res) => {
     console.log(req.query);
     req.db.collection('transaction').find().toArray(function(err, result) {
         if (err) {
+            console.log("\n\n\nERROR IN QUERYALL\n\n\n");
             console.log(err);
         } else {
+            console.log("\n\n\n\n\n we got here?\n\n\n");
             res.send(result);
         }
     });

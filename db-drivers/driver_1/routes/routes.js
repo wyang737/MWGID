@@ -50,6 +50,8 @@ app.get('/queryall', (req, res) => {
         if (err) {
             console.log(err);
         } else {
+            console.log(result);
+            console.log(res);
             res.send(result);
         }
     });

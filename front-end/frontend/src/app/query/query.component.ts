@@ -24,8 +24,16 @@ export class QueryComponent implements OnInit {
   }
 
   onSubmit(form){
-    this.returnValue = this.http.get("http://localhost:8080/queryAll", form).subscribe();
+    this.returnValue = this.http.get<Transaction>("http://localhost:8080/queryall").subscribe();
+    console.log(this.returnValue);
+    console.log("no subscribo: ");
+    console.log(this.http.get<Transaction>("http://localhost:8080/queryall"));
     this.formSubmit = true;
   } 
-
+}
+export interface Transaction
+{
+  userID: string;
+  recipientID: string;
+  data: string;
 }
