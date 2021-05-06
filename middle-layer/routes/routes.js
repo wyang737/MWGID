@@ -45,18 +45,6 @@ module.exports = function (app) {
         });
     });
 
-<<<<<<< HEAD
-app.get('/queryall', (req, res) => {
-    console.log(req.query);
-    req.db.collection('transaction').find().toArray(function(err, result) {
-        if (err) {
-            console.log("\n\n\nERROR IN QUERYALL\n\n\n");
-            console.log(err);
-        } else {
-            console.log("\n\n\n\n\n we got here?\n\n\n");
-            res.send(result);
-        }
-=======
     app.get('/queryall', (req, res) => {
         req.request('http://driver1:8080/queryAll', (err, response, body) => {
             if (err) { return console.log(err); }
@@ -75,6 +63,5 @@ app.get('/queryall', (req, res) => {
                 res.send(ret_obj);
             });
         });
->>>>>>> f912b03e1d8d5583e8a1abff5c93374daf0d9790
     });
 }

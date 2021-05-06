@@ -14,6 +14,8 @@ export class QueryComponent implements OnInit {
     "userid":""
   }
 
+  transaction: any;
+
   returnValue: any;
 
   formSubmit = false;
@@ -24,15 +26,17 @@ export class QueryComponent implements OnInit {
   }
 
   onSubmit(form){
-    this.returnValue = this.http.get<Transaction>("http://localhost:8080/queryall").subscribe();
+    this.returnValue = this.http.get<Transaction>("/queryAll").subscribe(
+      (data)=>this.transaction = data
+    );
+    console.log(this.transaction);
     console.log(this.returnValue);
-    console.log("no subscribo: ");
-    console.log(this.http.get<Transaction>("http://localhost:8080/queryall"));
-    this.formSubmit = true;
+    console.log("hi");
   } 
 }
 export interface Transaction
 {
+  _id: string;
   userID: string;
   recipientID: string;
   data: string;
