@@ -32,6 +32,7 @@ export class QueryComponent implements OnInit {
     console.log(this.transaction);
     console.log(this.returnValue);
     console.log("hi");
+    console.log(this.transaction["transactions"]);
   } 
 }
 export interface Transaction
