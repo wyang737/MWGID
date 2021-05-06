@@ -1,16 +1,6 @@
 <h2>Query the Database:</h2>
 
-<form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-	<table style="width:100%">
-		<tr>
-			<td><label>UserID:      </label></td>
-			<td><input type="text" [(ngModel)]="datamodel.userid" name="userid" required></td>
-			<td><button type="submit"> Search </button></td>
-		</tr>
-	</table>
-</form>
-
-<div class="container" *ngIf="formSubmit">
+<div class="container">
     <table class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>

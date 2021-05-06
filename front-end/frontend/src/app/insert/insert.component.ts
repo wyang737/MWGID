@@ -12,22 +12,25 @@ export class InsertComponent implements OnInit {
   @ViewChild('grantAccessForm', {static: false}) grantAccessForm: NgForm;
   
   datamodel = {
-    "senderID":"",
-    "recipientID": "",
+    "userID":"",
+    "recipID": "",
     "data":""
   }
 
+  formSubmit=false;
+
   constructor(private http : HttpClient) { }
 
-  data = {
-    "senderID": "asdf",
-    "recipientID": "asdfasdfsdfsd",
-    "data": "hjgfhj"
-  }
+
   ngOnInit(): void {
   }
   onSubmit(form){
-    this.http.post("http://localhost:8080/insert", form).subscribe();
-    this.http.post("http://localhost:8080/insert", this.data).subscribe();
+    var url: string = "/api/insert";
+    url = url + "?userID=" + this.datamodel.userID;
+    url = url + "&recipID=" + this.datamodel.recipID;
+    url = url + "&data=" + this.datamodel.data;
+    this.http.get(url).subscribe();
+    console.log("This works");
+    this.formSubmit = true;
   } 
 }

@@ -2,22 +2,16 @@ version: "2"
 services:
     mongo:
         image: 'mongo:latest'
-        ports:
-            - '27018:27017'
         networks:
             - myapp
     
     mongo2:
         image: 'mongo:latest'
-        ports:
-            - '27019:27017'
         networks:
             - myapp2
     
     driver1:
         build: ./db-drivers/driver_1/
-        ports:
-            - '8081:8080'
         networks:
             - myapp
         depends_on:
@@ -25,8 +19,6 @@ services:
     
     driver2:
         build: ./db-drivers/driver_2/
-        ports:
-            - '8082:8080'
         networks:
             - myapp2
         depends_on:
@@ -35,7 +27,7 @@ services:
     frontend:
         build: ./front-end/
         ports:
-            - '4201:4200'
+            - '4200:4200'
         volumes:
             - './front-end/frontend:/app'
             - '/app/node_modules'

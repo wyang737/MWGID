@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
 
 @Component({
-  selector: 'app-query',
-  templateUrl: './query.component.html',
-  styleUrls: ['./query.component.scss']
+  selector: 'app-show-all',
+  templateUrl: './show-all.component.html',
+  styleUrls: ['./show-all.component.scss']
 })
-export class QueryComponent implements OnInit {
+export class ShowAllComponent implements OnInit {
 
   @ViewChild('grantAccessForm', {static: false}) grantAccessForm: NgForm;
   datamodel = {
@@ -23,19 +23,12 @@ export class QueryComponent implements OnInit {
   constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
-  }
-
-  onSubmit(form){
-    var url: string = "/api/query?userID="+this.datamodel.userid;
+    var url: string = "/api/queryall";
     this.returnValue = this.http.get<Transaction>(url).subscribe(
       (data)=>this.transaction = data
     );
-    // console.log(this.transaction);
-    // console.log(this.returnValue);
-    // console.log("hi");
-    // console.log(this.transaction["transactions"]);
-    this.formSubmit = true;
-  } 
+  }
+
 }
 export interface Transaction
 {

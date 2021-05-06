@@ -18,7 +18,7 @@ module.exports = function (app) {
     });
     
     app.get('/query', (req, res) => {
-        var query = {userID: req.query.userID}
+        var query = {$or: [{"userID": req.query.userID}, {"recipID": req.query.userID}]};
         console.log(req.query);
         req.db.collection('transaction').find(query).toArray(function(err, result) {
             if (err) {

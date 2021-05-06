@@ -11,6 +11,9 @@ app.use(express.urlencoded({
 }));
 var mongoose = require('mongoose');
 
+let crypto;
+crypto = require('crypto');
+
 // Create link to Angular build directory
 // The `ng build` command will save the result
 // under the `dist` folder.
@@ -28,6 +31,7 @@ request = require('request');
 app.use(function(req, res, next) {
   req.test = "Hello1";
   req.request = request;
+  req.crypto = crypto;
 
     //Enabling CORS
   res.header("Access-Control-Allow-Origin", "*");
