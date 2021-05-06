@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-query',
@@ -13,35 +14,17 @@ export class QueryComponent implements OnInit {
     "userid":""
   }
 
-  returnValue: any = {
-    "transactions":[
-      {
-        "userid":"NileshMukherji",
-        "recipid": "WinstonYang",
-        "data": "PAID 100"
-      },
-      {
-        "userid":"NileshMukherji",
-        "recipid": "BrianGuo",
-        "data": "PROVIDED PENILE EXAM"
-      },
-      {
-        "userid":"BrianGuo",
-        "recipid": "NileshMukherji",
-        "data": "PAID 150"
-      },
-    ]
-  }
+  returnValue: any;
 
   formSubmit = false;
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form){
-    console.log(JSON.stringify(form));
+    this.returnValue = this.http.get("http://localhost:8080/queryAll", form).subscribe();
     this.formSubmit = true;
   } 
 

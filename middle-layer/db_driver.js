@@ -2,6 +2,8 @@ var assert = require('assert');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var cors = require('cors');
+app.use(cors());
 const LOCAL_PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({
@@ -26,7 +28,12 @@ request = require('request');
 app.use(function(req, res, next) {
   req.test = "Hello1";
   req.request = request;
-	next();
+
+    //Enabling CORS
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+  next();
 });
 
 
