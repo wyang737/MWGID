@@ -1,6 +1,6 @@
 let counter = 0;
 module.exports = function (app) {
-    app.post('/insert', (req, res) => {
+    app.get('/api/insert', (req, res) => {
         var data = {
             "userID": req.query.userID,
             "recipID": req.query.recipID,
@@ -18,9 +18,34 @@ module.exports = function (app) {
                 res.send(data);
             });
         }
+        if (counter%10 == 0){
+            req.request('http://driver1:8080/query6', (err, response, body) => {
+                if (err) { return console.log(err); }
+                req.request('http://driver2:8080/query6', (err, response, body2) => {
+                    if (err) { return console.log(err); }
+                    let json = JSON.parse(body);
+                    let json2 = JSON.parse(body2);
+                    let data1 = {
+                        "userID":"hash",
+                        "data": req.crypto.createHash("sha256").update(JSON.stringify(json)).digest('hex')
+                    }
+                    let data2 = {
+                        "userID":"hash",
+                        "data": req.crypto.createHash("sha256").update(JSON.stringify(json2)).digest('hex')
+                    }
+                    req.request({url: 'http://driver2:8080/insert', method: "post", qs: data1}, (err, response, body) => {
+                        if (err) { return console.log(err); }
+                        req.request({url: 'http://driver1:8080/insert', method: "post", qs: data2}, (err, response, body) => {
+                            if (err) { return console.log(err); }
+                        });
+                    });
+
+                });
+            });
+        }
     });
     
-    app.get('/query', (req, res) => {
+    app.get('/api/query', (req, res) => {
         var query = {userID: req.query.userID}
         console.log(query);
         req.request({url: 'http://driver1:8080/query', qs: {"userID": req.query.userID}}, (err, response, body) => {
@@ -45,7 +70,7 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/queryall', (req, res) => {
+    app.get('/api/queryall', (req, res) => {
         req.request('http://driver1:8080/queryAll', (err, response, body) => {
             if (err) { return console.log(err); }
             req.request('http://driver2:8080/queryAll', (err, response, body2) => {

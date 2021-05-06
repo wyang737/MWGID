@@ -2,19 +2,20 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 	<table style="width:100%">
 		<tr>
-			<td><label>Sender ID:</label></td>
-			<td><input [(ngModel)]="datamodel.senderID" name="senderID" required></td>
+			<td><label>User ID:</label></td>
+			<td><input [(ngModel)]="datamodel.userID" name="senderID" required></td>
 		</tr>
 		<tr>
 			<td><label>Recipient ID:       </label></td>
-			<td><input type="text" [(ngModel)]="datamodel.recipientID" name="recipientID" required></td>
+			<td><input type="text" [(ngModel)]="datamodel.recipID" name="recipientID" required></td>
 		</tr>	
 		<tr>
 			<td><label> Transaction Data:   </label></td>
 			<td><input type="text" [(ngModel)]="datamodel.data" name="data" required></td>
 		</tr>
 		<tr>
-			<button type="submit"> Add </button>
+			<td><button type="submit"> Add </button></td>
+			<td><p *ngIf="formSubmit">Thanks for inserting!</p></td>
 		</tr>
 	</table>
 	
