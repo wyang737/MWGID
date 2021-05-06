@@ -1,5 +1,3 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://mongo2:27017/";
 var assert = require('assert');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -16,27 +14,18 @@ var mongoose = require('mongoose');
 // under the `dist` folder.
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
-var db;
+var request;
 var routes = require('./routes/routes');
 
 mongoose.Promise = global.Promise;
 // mongoose.connect(url); 
 
-MongoClient.connect('mongodb://mongo2:27017/mongo2', function(err, database) {
-    if (err) {
-        throw err;
-    }
-    else {
-        db = database;        
-    }
-});
-
+request = require('request');
 
 // make our db accessible to our router
 app.use(function(req, res, next) {
-	// req.db = db;
   req.test = "Hello1";
-  req.db = db.db("mongo2");
+  req.request = request;
 	next();
 });
 
