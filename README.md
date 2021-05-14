@@ -1,9 +1,8 @@
 # Setup
 
-First, you need to have `make` installed. To run the project, you will need `Node.js`, `MongoDB` and `Mocha`
-- To set up the development environment, run `make dev_env`
-- To build production, run `make prod`
-- To run a test, run `make test`
+To run the project, you need to have `Docker` and `Docker Compose` downloaded. After cloning the repo:
+- To build production, run `docker-compose build`
+- To run production, run `docker-compose up`
 
 # Overview
 SWE Project with Brian Guo, Nilesh Mukherji, Winston Yang for CS-4513
