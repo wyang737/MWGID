@@ -4,11 +4,13 @@ services:
         image: 'mongo:latest'
         networks:
             - myapp
+        restart: unless-stopped
     
     mongo2:
         image: 'mongo:latest'
         networks:
             - myapp2
+        restart: unless-stopped
     
     driver1:
         build: ./db-drivers/driver_1/
@@ -16,6 +18,7 @@ services:
             - myapp
         depends_on:
             - mongo
+        restart: unless-stopped
     
     driver2:
         build: ./db-drivers/driver_2/
@@ -23,6 +26,7 @@ services:
             - myapp2
         depends_on:
             - mongo2
+        restart: unless-stopped
 
     frontend:
         build: ./front-end/
@@ -35,6 +39,7 @@ services:
             - front-end
         depends_on: 
             - middleware
+        restart: unless-stopped
     
     middleware:
         build:
@@ -48,6 +53,7 @@ services:
             - front-end
             - myapp
             - myapp2
+        restart: unless-stopped
 
 networks:
     myapp:

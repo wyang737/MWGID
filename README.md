@@ -1,8 +1,11 @@
 # Setup
 
 To run the project, you need to have `Docker` and `Docker Compose` downloaded. After cloning the repo:
-- To build production, run `docker-compose build`
-- To run production, run `docker-compose up`
+- To build production, run `make build`
+- To build & run production, run `make build-prod`
+- To run production, run `make prod`
+- To run tests, run the production, then in a seperate terminal run `make test`
+
 
 # Overview
 SWE Project with Brian Guo, Nilesh Mukherji, Winston Yang for CS-4513
