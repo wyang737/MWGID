@@ -3,7 +3,7 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 	<table style="width:100%">
 		<tr>
-			<td><label>UserID:      </label></td>
+			<td><label>Patient ID:</label></td>
 			<td><input type="text" [(ngModel)]="datamodel.userid" name="userid" required></td>
 			<td><button type="submit"> Search </button></td>
 		</tr>
@@ -14,8 +14,8 @@
     <table class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>User ID</th>
-                <th>Recipient ID</th>
+                <th>Patient ID</th>
+                <th>Doctor ID</th>
                 <th>Data</th>
             </tr>
         </thead>
