@@ -2,11 +2,11 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 	<table style="width:100%">
 		<tr>
-			<td><label>User ID:</label></td>
-			<td><input [(ngModel)]="datamodel.userID" name="senderID" required></td>
+			<td><label>Patient ID:</label></td>
+			<td><input [(ngModel)]="datamodel.patientID" name="senderID" required></td>
 		</tr>
 		<tr>
-			<td><label>Recipient ID:       </label></td>
+			<td><label>Doctor ID:</label></td>
 			<td><input type="text" [(ngModel)]="datamodel.recipID" name="recipientID" required></td>
 		</tr>	
 		<tr>
