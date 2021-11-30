@@ -2,16 +2,20 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 	<table style="width:100%">
 		<tr>
-			<td><label>User ID:</label></td>
+			<td><label>Patient ID:</label></td>
 			<td><input [(ngModel)]="datamodel.userID" name="senderID" required></td>
 		</tr>
 		<tr>
-			<td><label>Recipient ID:       </label></td>
+			<td><label>Doctor ID:</label></td>
 			<td><input type="text" [(ngModel)]="datamodel.recipID" name="recipientID" required></td>
 		</tr>	
 		<tr>
-			<td><label> Transaction Data:   </label></td>
+			<td><label> Transaction Data:</label></td>
 			<td><input type="text" [(ngModel)]="datamodel.data" name="data" required></td>
+		</tr>
+		<tr>
+			<td><label> Additional Notes:</label></td>
+			<td><input type="text" [(ngModel)]="datamodel.notes" name="notes" required></td>
 		</tr>
 		<tr>
 			<td><button type="submit"> Add </button></td>

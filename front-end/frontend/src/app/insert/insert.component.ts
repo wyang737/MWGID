@@ -14,7 +14,8 @@ export class InsertComponent implements OnInit {
   datamodel = {
     "userID":"",
     "recipID": "",
-    "data":""
+    "data":"",
+    "notes":"",
   }
 
   formSubmit=false;
@@ -29,6 +30,7 @@ export class InsertComponent implements OnInit {
     url = url + "?userID=" + this.datamodel.userID;
     url = url + "&recipID=" + this.datamodel.recipID;
     url = url + "&data=" + this.datamodel.data;
+    // url = url + "&notes=" + this.datamodel.notes;
     this.http.get(url).subscribe();
     console.log("This works");
     this.formSubmit = true;
