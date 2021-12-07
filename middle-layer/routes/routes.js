@@ -91,3 +91,16 @@ module.exports = function(app) {
     });
   });
 };
+
+
+function checkHash(counter){
+  if ((counter % 10) == 0){
+    var skip1 = (counter % 10)/2
+    var skip2 = (counter % 10)/2
+  } else {
+    var skip2 = Math.floor((counter % 10)/2);
+    var skip1 = skip2 + 1;
+  }
+
+  
+}

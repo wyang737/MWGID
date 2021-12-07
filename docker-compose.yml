@@ -19,14 +19,20 @@ services:
         depends_on:
             - mongo
         restart: unless-stopped
+        environment:
+            - URL=mongodb://mongo:27017/
+            - URL1=mongodb://mongo:27017/mongo1
     
     driver2:
-        build: ./db-drivers/driver_2/
+        build: ./db-drivers/driver_1/
         networks:
             - myapp2
         depends_on:
             - mongo2
         restart: unless-stopped
+        environment:
+            - URL=mongodb://mongo2:27017/
+            - URL1=mongodb://mongo2:27017/mongo2
 
     frontend:
         build: ./front-end/

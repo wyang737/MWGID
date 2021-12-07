@@ -1,6 +1,6 @@
 'use strict';
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://mongo:27017/mongo1';
+var url = process.env.URL1;
 var express = require('express');
 var app = express();
 var cors = require('cors');

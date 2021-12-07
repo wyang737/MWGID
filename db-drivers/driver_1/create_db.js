@@ -1,8 +1,8 @@
 'use strict';
 var MongoClient = require('mongodb').MongoClient;
 // Create a database named "mydb":
-var url1 = 'mongodb://mongo:27017/mongo1';
-var url = 'mongodb://mongo:27017/';
+var url1 = process.env.URL1;
+var url = process.env.URL;
 
 
 // Create DB

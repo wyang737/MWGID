@@ -44,6 +44,27 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/checkHash', (req, res) => {
+    console.log(req.query);
+    req.db.collection('transaction').find().skip(req.query.skip+1).limit(6).toArray(function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        req.db.collection('transaction').find().skip(req.query.skip).limit(1).toArray(function(err, result1) {
+          if (err) {
+            console.log(err);
+          } else {
+            returnVal = {
+              'Hash': result1,
+              'Value': result
+            }
+            res.send(returnVal)
+          }
+        });
+      }
+    });
+  });
+
   app.get('/queryall', (req, res) => {
     console.log(req.query);
     req.db.collection('transaction').find().toArray(function(err, result) {
