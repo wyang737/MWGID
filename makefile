@@ -22,6 +22,7 @@ push:
 	@git commit -a
 	@git push
 	@python3 updater.py
+	@sudo docker-compose stop
 
 update:
 	@git pull
