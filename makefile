@@ -27,5 +27,5 @@ update:
 	@git pull
 	@sudo docker-compose build
 	@sudo docker-compose stop
-	@sudo docker-compose up
+	@sudo docker-compose up -d
 
