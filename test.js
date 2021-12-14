@@ -13,31 +13,43 @@ http.get('http://localhost:4200/api/insert/?userID=specialtest&recipID=number&da
 			{
 				console.log("Single Insert Worked")
 			}
+			else {
+				process.exit(1)
+			}
 		})
 	})
 })
 
-var i;
-for (i = 0; i <= 10; i ++)
-{
-	http.get('http://localhost:4200/api/insert/?userID=test&recipID=number&data=' + i), (response) => {
-	}
-} 
-
-http.get('http://localhost:4200/api/queryall', function(response) {
-});
-
-http.get('http://localhost:4200/api/query/?userID=hash', function(res) {
-    var hashBody;
-	res.on("data", function(chunk) {
-		console.log("Testing for hashing/queryall:");
-		hashBody += chunk;	
-	})
-	res.on("end", () =>{
-		var jsonHashRet = JSON.parse(hashBody.substring(9));
-		if (jsonHashRet.transactions[0].userID == "hash")
+async function insertThings(){
+	return Promise(res => {
+		var i;
+		for (i = 0; i <= 20; i ++)
 		{
-			console.log("Hash / Queryall worked")
-		}
-	})
+			http.get('http://localhost:4200/api/insert/?userID=test&recipID=number&data=' + i), (response) => {
+			}
+		} 
+		res(i)
+	});
+}
+
+var1 = insertThings();
+
+var1.then((res) => {
+	http.get('http://localhost:4200/api/query/?userID=hash', function(res) {
+		var hashBody;
+		res.on("data", function(chunk) {
+			console.log("Testing for hashing/queryall:");
+			hashBody += chunk;	
+		})
+		res.on("end", () =>{
+			var jsonHashRet = JSON.parse(hashBody.substring(9));
+			if (jsonHashRet.transactions[0].userID == "hash")
+			{
+				console.log("Hash / Queryall worked")
+			}
+			else {
+				process.exit(1)
+			}
+		})
+	});
 });
