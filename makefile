@@ -12,6 +12,7 @@ test:
 	@node test.js
 
 push:
+	@echo "Testing Before Deployment"
 	@sudo docker-compose stop
 	@sudo docker-compose build
 	@sudo docker-compose up -d
