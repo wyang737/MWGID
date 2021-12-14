@@ -20,7 +20,7 @@ push:
 	@sleep 35
 	@node test.js 
 	@echo "TESTS PASSED!"
-	@git commit -a
+	-git commit -a
 	@git push
 	@python3 updater.py
 	@sudo docker-compose stop
